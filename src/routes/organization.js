@@ -17,7 +17,7 @@ import {
 
 const router = Router()
 
-// router.get('/', getOrganizations)
+router.get('/', getOrganizations)
 // router.get('/:organizationId', getOrganization)
 // router.get('/:organizationId/events', getOrganizationEvents)
 // router.get('/:organizationId/event/:eventId', getOrganizationEvent)

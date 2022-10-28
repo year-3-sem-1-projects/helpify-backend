@@ -8,3 +8,12 @@ export const addOrganizationRepository = async (data) => {
     return { status: error.status, message: error.message }
   }
 }
+
+export const getOrganizationsRepository = async () => {
+  try {
+    const result = await Organization.find()
+    return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}
