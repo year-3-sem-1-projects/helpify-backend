@@ -4,7 +4,7 @@ import organizationRouter from './organization'
 
 const router = express.Router()
 
-router.use('/users', userRouter)
-router.use('/organizations', organizationRouter)
+router.use('/user', userRouter)
+router.use('/organization', organizationRouter)
 
 export default router

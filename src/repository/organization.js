@@ -1,0 +1,10 @@
+import Organization from '../models/organization'
+
+export const addOrganizationRepository = async (data) => {
+  try {
+    const result = await new Organization(data).save()
+    return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}
