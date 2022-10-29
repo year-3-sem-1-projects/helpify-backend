@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import {
   getOrganizations,
-  getOrganization,
+  getOrganizationById,
   getOrganizationEvents,
   getOrganizationEvent,
   addOrganization,
@@ -18,7 +18,7 @@ import {
 const router = Router()
 
 router.get('/', getOrganizations)
-// router.get('/:organizationId', getOrganization)
+router.get('/:organizationId', getOrganizationById)
 // router.get('/:organizationId/events', getOrganizationEvents)
 // router.get('/:organizationId/event/:eventId', getOrganizationEvent)
 router.post('/add/organization', addOrganization)

@@ -17,3 +17,12 @@ export const getOrganizationsRepository = async () => {
     return { status: error.status, message: error.message }
   }
 }
+
+export const getOrganizationByIdRepository = async (organizationId) => {
+  try {
+    const result = await Organization.findById(organizationId)
+    return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}
