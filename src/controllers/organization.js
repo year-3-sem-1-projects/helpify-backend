@@ -2,6 +2,7 @@ import asyncHandler from '../middleware/asyncHandler'
 import { makeResponse } from '../utils/response'
 import {
   addOrganizationService,
+  addEventService,
   getOrganizationsService,
   getOrganizationByIdService,
 } from '../services/organization'
@@ -11,6 +12,13 @@ export const addOrganization = asyncHandler(async (req, res) => {
   if (!result) return makeResponse({ res, status: 500, message: 'Organization Creation failed' })
   if (result.status) return makeResponse({ res, ...result })
   return makeResponse({ res, data: result, message: 'Organization Creation Successful.' })
+})
+
+export const addEvent = asyncHandler(async (req, res) => {
+  const result = await addEventService(req.params, req.body)
+  if (!result) return makeResponse({ res, status: 500, message: 'Event Creation failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Event Creation Successful.' })
 })
 
 export const getOrganizations = asyncHandler(async (req, res) => {
