@@ -16,7 +16,7 @@ const EventSchema = new mongoose.Schema(
     },
     event_venue: {
       type: String,
-      required: false,
+      required: true,
     },
     event_website: {
       type: String,
@@ -51,7 +51,7 @@ const EventSchema = new mongoose.Schema(
       required: false,
     },
     event_status: {
-      type: Boolean,
+      type: String,
       required: true,
     },
     event_stories: {
