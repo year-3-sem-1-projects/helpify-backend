@@ -38,15 +38,7 @@ const OrganizationSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    ongoing_events: {
-      type: Array,
-      required: false,
-    },
-    past_events: {
-      type: Array,
-      required: false,
-    },
-    upcoming_events: {
+    events: {
       type: Array,
       required: false,
     },
