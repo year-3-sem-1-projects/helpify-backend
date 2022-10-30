@@ -80,24 +80,3 @@ const OrganizationSchema = new mongoose.Schema(
 const Organization = mongoose.model('organization', OrganizationSchema)
 
 export default Organization
-
-// Event
-
-// eventTitle
-// eventDescription
-// interestedUsers
-// stories
-// eventImage
-// timePeriod
-// status
-// donationsCollected
-// fundsRaised
-// shareCount
-
-// Story
-
-// Title
-// description
-// images
-// likeCount
-// dislikeCount
