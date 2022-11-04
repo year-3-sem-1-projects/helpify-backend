@@ -70,3 +70,19 @@ export const getOrganizationEventRepository = async (eventId) => {
     return { status: error.status, message: error.message }
   }
 }
+
+export const addStoryRepository = async (eventId, data) => {
+  console.log('data', data)
+  try {
+    const { _id } = await new Story(data).save()
+
+    const result = await Event.findByIdAndUpdate(
+      eventId,
+      { $push: { event_stories: _id } },
+      { new: true },
+    )
+    return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}

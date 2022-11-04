@@ -58,10 +58,12 @@ const EventSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    event_stories: {
-      type: Array,
-      required: false,
-    },
+    event_stories: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'story',
+      },
+    ],
   },
   {
     versionKey: false,

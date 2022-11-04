@@ -8,6 +8,7 @@ import {
   getEventsService,
   getOrganizationEventsService,
   getOrganizationEventService,
+  addStoryService,
 } from '../services/organization'
 
 export const addOrganization = asyncHandler(async (req, res) => {
@@ -58,4 +59,12 @@ export const getOrganizationEvent = asyncHandler(async (req, res) => {
   if (!result) return makeResponse({ res, status: 500, message: 'Event Retrieval failed' })
   if (result.status) return makeResponse({ res, ...result })
   return makeResponse({ res, data: result, message: 'Event Retrieval Successful.' })
+})
+
+export const addStory = asyncHandler(async (req, res) => {
+  console.log(req.body, req.params)
+  const result = await addStoryService(req.params, req.body)
+  if (!result) return makeResponse({ res, status: 500, message: 'Story Creation failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Story Creation Successful.' })
 })
