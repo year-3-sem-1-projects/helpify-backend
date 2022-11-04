@@ -14,6 +14,10 @@ const EventSchema = new mongoose.Schema(
       type: Array,
       required: false,
     },
+    volunteers: {
+      type: Array,
+      required: false,
+    },
     event_venue: {
       type: String,
       required: true,

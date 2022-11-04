@@ -5,6 +5,8 @@ import {
   addEventService,
   getOrganizationsService,
   getOrganizationByIdService,
+  getEventsService,
+  getOrganizationEventsService,
 } from '../services/organization'
 
 export const addOrganization = asyncHandler(async (req, res) => {
@@ -33,4 +35,19 @@ export const getOrganizationById = asyncHandler(async (req, res) => {
   if (!result) return makeResponse({ res, status: 500, message: 'Organization Retrieval failed' })
   if (result.status) return makeResponse({ res, ...result })
   return makeResponse({ res, data: result, message: 'Organization Retrieval Successful.' })
+})
+
+export const getEvents = asyncHandler(async (req, res) => {
+  const result = await getEventsService()
+  if (!result) return makeResponse({ res, status: 500, message: 'Events Retrieval failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Events Retrieval Successful.' })
+})
+
+export const getOrganizationEvents = asyncHandler(async (req, res) => {
+  const result = await getOrganizationEventsService(req.params.organizationId)
+  if (!result)
+    return makeResponse({ res, status: 500, message: 'Organization Events Retrieval failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Organization Events Retrieval Successful.' })
 })

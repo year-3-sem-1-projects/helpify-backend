@@ -3,6 +3,8 @@ import {
   addEventRepository,
   getOrganizationsRepository,
   getOrganizationByIdRepository,
+  getEventsRepository,
+  getOrganizationEventsRepository,
 } from '../repository/organization'
 
 export const addOrganizationService = async (data) => {
@@ -19,4 +21,12 @@ export const getOrganizationsService = async () => {
 
 export const getOrganizationByIdService = async (organizationId) => {
   return await getOrganizationByIdRepository(organizationId)
+}
+
+export const getEventsService = async () => {
+  return await getEventsRepository()
+}
+
+export const getOrganizationEventsService = async (organizationId) => {
+  return await getOrganizationEventsRepository(organizationId)
 }

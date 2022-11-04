@@ -38,10 +38,12 @@ const OrganizationSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    events: {
-      type: Array,
-      required: false,
-    },
+    events: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'event',
+      },
+    ],
     organization_admin: {
       type: String,
       required: true,

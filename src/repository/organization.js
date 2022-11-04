@@ -12,8 +12,6 @@ export const addOrganizationRepository = async (data) => {
 }
 
 export const addEventRepository = async (organizationId, data) => {
-  console.log('organizationId:::::::::;', organizationId)
-  console.log('data:::::::', data)
   try {
     const { _id } = await new Event(data).save()
 
@@ -41,6 +39,24 @@ export const getOrganizationByIdRepository = async (organizationId) => {
   try {
     const result = await Organization.findById(organizationId)
     return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}
+
+export const getEventsRepository = async () => {
+  try {
+    const result = await Event.find()
+    return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}
+
+export const getOrganizationEventsRepository = async (organizationId) => {
+  try {
+    const { events } = await Organization.findById(organizationId).populate('events')
+    return events
   } catch (error) {
     return { status: error.status, message: error.message }
   }
