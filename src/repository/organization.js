@@ -61,3 +61,12 @@ export const getOrganizationEventsRepository = async (organizationId) => {
     return { status: error.status, message: error.message }
   }
 }
+
+export const getOrganizationEventRepository = async (eventId) => {
+  try {
+    const result = await Event.findById(eventId)
+    return result
+  } catch (error) {
+    return { status: error.status, message: error.message }
+  }
+}
