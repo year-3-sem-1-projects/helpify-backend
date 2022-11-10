@@ -48,14 +48,18 @@ const OrganizationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    blocked_organizations: {
-      type: Array,
-      required: false,
-    },
-    blocked_users: {
-      type: Array,
-      required: false,
-    },
+    blocked_organizations: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'organization',
+      },
+    ],
+    blocked_users: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+      },
+    ],
     rating: {
       type: Number,
       required: false,

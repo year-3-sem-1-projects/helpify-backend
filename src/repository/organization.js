@@ -7,7 +7,7 @@ export const addOrganizationRepository = async (data) => {
     const result = await new Organization(data).save()
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -22,7 +22,7 @@ export const addEventRepository = async (organizationId, data) => {
     )
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -31,7 +31,7 @@ export const getOrganizationsRepository = async () => {
     const result = await Organization.find()
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -40,7 +40,7 @@ export const getOrganizationByIdRepository = async (organizationId) => {
     const result = await Organization.findById(organizationId)
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -49,7 +49,7 @@ export const getEventsRepository = async () => {
     const result = await Event.find()
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -58,7 +58,7 @@ export const getOrganizationEventsRepository = async (organizationId) => {
     const { events } = await Organization.findById(organizationId).populate('events')
     return events
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -67,7 +67,7 @@ export const getOrganizationEventRepository = async (eventId) => {
     const result = await Event.findById(eventId)
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
 
@@ -83,6 +83,6 @@ export const addStoryRepository = async (eventId, data) => {
     )
     return result
   } catch (error) {
-    return { status: error.status, message: error.message }
+    return { status: error.code, message: error.message }
   }
 }
