@@ -10,14 +10,30 @@ const EventSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    interested_people: {
-      type: Array,
-      required: false,
-    },
-    volunteers: {
-      type: Array,
-      required: false,
-    },
+    interested_user: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+      },
+    ],
+    interested_organization: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'organization',
+      },
+    ],
+    volunteers_user: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+      },
+    ],
+    volunteers_organization: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'organization',
+      },
+    ],
     event_venue: {
       type: String,
       required: true,
@@ -46,22 +62,44 @@ const EventSchema = new mongoose.Schema(
       type: Number,
       required: false,
     },
-    funds_raised: {
-      type: Number,
-      required: false,
-    },
-    donations_collected: {
-      type: Object,
-      required: false,
-    },
-    event_status: {
-      type: String,
-      required: true,
-    },
-    event_stories: {
-      type: Array,
-      required: false,
-    },
+    donaters_user: [
+      {
+        _id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'user',
+        },
+        amount: {
+          type: Number,
+          required: false,
+        },
+        type: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+    donaters_organization: [
+      {
+        _id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'organization',
+        },
+        amount: {
+          type: Number,
+          required: true,
+        },
+        type: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
+    event_stories: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'story',
+      },
+    ],
   },
   {
     versionKey: false,
