@@ -9,6 +9,11 @@ import {
   getStoriesRepository,
   updateStoryRepository,
   deleteStoryRepository,
+  createInstitutionRepository,
+  getInstitutionByIdRepository,
+  getAllInstitutionsRepository,
+  updateInstitutionRepository,
+  deleteInstitutionRepository,
 } from '../repository/institution'
 
 export const createCampaignService = async (data) => {
@@ -49,4 +54,24 @@ export const updateStoryService = async (storyId, data) => {
 
 export const deleteStoryService = async (storyId) => {
   return await deleteStoryRepository(storyId)
+}
+
+export const createInstitutionService = async (data) => {
+  return await createInstitutionRepository(data)
+}
+
+export const getAllInstitutionsService = async () => {
+  return await getAllInstitutionsRepository()
+}
+
+export const getInstitutionByIdService = async (institutionId) => {
+  return await getInstitutionByIdRepository(institutionId)
+}
+
+export const updateInstitutionService = async (institutionId, data) => {
+  return await updateInstitutionRepository(institutionId, data)
+}
+
+export const deleteInstitutionService = async (institutionId) => {
+  return await deleteInstitutionRepository(institutionId)
 }

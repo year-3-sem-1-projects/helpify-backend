@@ -10,6 +10,11 @@ import {
   createStory,
   updateStory,
   deleteStory,
+  getInstitutionById,
+  getAllInstitutions,
+  createInstitution,
+  updateInstitution,
+  deleteInstitution,
 } from '../controllers/institution'
 
 const router = Router()
@@ -25,5 +30,11 @@ router.get('/stories', getStories)
 router.post('/stories/create', createStory)
 router.put('/stories/update/:storyId', updateStory)
 router.delete('/stories/delete/:storyId', deleteStory)
+
+router.get('/all-institutions', getAllInstitutions)
+router.get('/:institutionId', getInstitutionById)
+router.post('/create', createInstitution)
+router.put('/update/:institutionId', updateInstitution)
+router.delete('/delete/:institutionId', deleteInstitution)
 
 export default router
