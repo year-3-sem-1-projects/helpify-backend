@@ -22,6 +22,14 @@ const StorySchema = new mongoose.Schema(
       type: Number,
       required: false,
     },
+    type: {
+      type: String,
+      required: true,
+    },
+    eventId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'event',
+    }
   },
   {
     versionKey: false,
