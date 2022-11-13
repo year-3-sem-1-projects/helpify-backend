@@ -11,6 +11,11 @@ import {
   getStoryByIdService,
   updateStoryService,
   deleteStoryService,
+  getInstitutionByIdService,
+  getAllInstitutionsService,
+  createInstitutionService,
+  updateInstitutionService,
+  deleteInstitutionService,
 } from '../services/institution'
 
 export const createCampaign = asyncHandler(async (req, res) => {
@@ -81,4 +86,39 @@ export const deleteStory = asyncHandler(async (req, res) => {
   if (!result) return makeResponse({ res, status: 500, message: 'Story Deletion Failed' })
   if (result.status) return makeResponse({ res, ...result })
   return makeResponse({ res, data: result, message: 'Story Deletion Successful.' })
+})
+
+export const getInstitutionById = asyncHandler(async (req, res) => {
+  const result = await getInstitutionByIdService(req.params.institutionId)
+  if (!result) return makeResponse({ res, status: 500, message: 'Institution Retrieval Failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Institution Retrieval Successful.' })
+})
+
+export const createInstitution = asyncHandler(async (req, res) => {
+  const result = await createInstitutionService(req.body)
+  if (!result) return makeResponse({ res, status: 500, message: 'Institution Creation Failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Institution Creation Successful.' })
+})
+
+export const updateInstitution = asyncHandler(async (req, res) => {
+  const result = await updateInstitutionService(req.params.institutionId, req.body)
+  if (!result) return makeResponse({ res, status: 500, message: 'Institution Update Failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Institution Update Successful.' })
+})
+
+export const deleteInstitution = asyncHandler(async (req, res) => {
+  const result = await deleteInstitutionService(req.params.institutionId)
+  if (!result) return makeResponse({ res, status: 500, message: 'Institution Deletion Failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Institution Deletion Successful.' })
+})
+
+export const getAllInstitutions = asyncHandler(async (req, res) => {
+  const result = await getAllInstitutionsService()
+  if (!result) return makeResponse({ res, status: 500, message: 'Institution Retrieval Failed' })
+  if (result.status) return makeResponse({ res, ...result })
+  return makeResponse({ res, data: result, message: 'Institution Retrieval Successful.' })
 })
